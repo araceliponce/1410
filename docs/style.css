@@ -1,0 +1,142 @@
+:root {
+    --bg: white;
+    --color1: #ffadad;
+    --color2: #ffd6a5;
+    --color3: #fdffb6;
+    --color4: #caffbf;
+    --color5: #9bf6ff;
+    --color6: #a0c4ff;
+    --color7: #bdb2ff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: black;
+        --color1: #ffadade5;
+        --color2: #ffd6a5e5;
+        --color3: #fdffb6e5;
+        --color4: #caffbfe5;
+        --color5: #9bf6ffe5;
+        --color6: #a0c4ffe5;
+        --color7: #bdb2ffe5;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Manrope", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    padding: 3vh 0;
+}
+
+main {
+    min-height: 94vh;
+    /* since the padding on body is 3vh on top and bottom */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+button {
+    z-index: 7;
+}
+
+#notas>div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+    /* https://css-tricks.com/almanac/properties/g/grid-template-columns/ */
+}
+
+textarea {
+    display: inline-block;
+    resize: none;
+    outline: none;
+    padding: 0.5rem 0.7rem;
+    font-size: 1rem;
+    margin: 0.15rem; /* aesthetics */
+}
+
+#notas2 {
+    display: flex; /* columns blocks are inline, in the default row direction */
+    width: 80%;
+    margin: 0 auto;
+
+    justify-content: center;
+}
+
+#notas2>div {
+    /* #notas2 .col1, #notas2 . col2 ...col3*/
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  
+
+    flex-basis: 100%;    /* flex-basis es para items no containers, estos divs son items dentro de un container flex, por eso */
+    max-width: 30%;
+}
+
+#notas2 textarea {
+    flex-grow: 0;
+    max-height: 20vh;
+
+    max-width: 100%;
+    aspect-ratio: 1;
+}
+
+#notas2 textarea,
+#plus-sign,
+#prepend-sign {
+    border-radius: 0.2rem;
+    border: 0.05rem solid grey;
+}
+
+button {
+    background-color: none;
+    border: none;
+}
+
+#plus-sign,
+#prepend-sign {
+    font-size: 2rem;
+    font-weight: 200;
+    width: 3rem;
+    height: 3rem;
+
+    padding: 1rem;
+    position: fixed;
+    bottom: 3vh;
+    right: 3vh;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#prepend-sign {
+    top: 3vh;
+}
+
+.new-top-child {
+    animation-name: falling;
+    animation-duration: .5s;
+    animation-timing-function: ease;
+}
+
+@keyframes falling {
+    0% {
+        opacity: 0;
+        transform: translateY(-50vh);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
